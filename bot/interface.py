@@ -3,6 +3,7 @@ import numpy as np
 import sklearn
 import pandas as pd
 
+
 def setup(filename):
     with open(filename, 'rb') as f:
         model = pickle.load(f)
@@ -23,7 +24,7 @@ def start():
 
 # вывод информации о боте
 def view_info():
-    print('что-то')
+    print('Список команд')
     command = input('>>> ')
     handler(command)
 
@@ -59,13 +60,13 @@ def skills():
                 'rate': round(float(text[1]))
             })
 
-    print('что-то')
+    print('Вы ввели данные, пожалуйста подождите (*_*)')
     preprocessing(list_skills)
 
 
 def preprocessing(list_skills):
+    # препроцессинг
     vectorizer('text')
-    pass
 
 
 def vectorizer(text):
@@ -81,5 +82,5 @@ def predict(vector):
 
     clusters_list = setup('data/clusters.sav')
     print(clusters_list[clusters_list['cluster'] == cluster]['titles'])
-
+    view_info()
 
